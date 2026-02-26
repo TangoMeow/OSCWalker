@@ -9,6 +9,7 @@ Extremely simple program that allows to track inputs from a Wii Balance Board in
 - VRChat (It was kind of made for... specifically VRChat)<br>
 - Bluetooth<br>
 - Uses Pygame (pip install pygame)<br>
+- Uses python-osc (pip install python-osc)
 - [Uses Python](https://www.python.org/)<br>
 - [Uses WiiBalanceWalker by Shachar Liberman](https://github.com/lshachar/WiiBalanceWalker)<br>
 
