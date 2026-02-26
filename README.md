@@ -4,6 +4,8 @@ Extremely simple program that allows to track inputs from a Wii Balance Board in
 
 ## Requirements
 
+### Currently only works/tested with Windows. Have not tested with Linux, and I am not 100% certain that WiiBalanceWalker works on Linux.
+
 - VRChat (It was kind of made for... specifically VRChat)<br>
 - Bluetooth<br>
 - Uses Pygame (pip install pygame)<br>
@@ -24,7 +26,14 @@ Extremely simple program that allows to track inputs from a Wii Balance Board in
 
 ## Usage
 
-- After setting up, simply run the Python application.
+### Windows
+
+- Download the zip file by pressing the big green "Code" button, then "Download ZIP".
+- Extract the folder and open it.
+- While inside the folder, right click empty space and click "Open in Terminal"
+- Type and run "python OSCWalker.py"
+
+**You may want to run pygame while within VSCode/Codium in order to view terminal logs**
 
 ## Troubleshoot
 - Ensure that pygame is installed.
