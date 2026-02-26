@@ -4,9 +4,9 @@ Extremely simple program that allows to track inputs from a Wii Balance Board in
 
 ## Windows Defender Screen
 
-The application has to detect inputs at all times and while the windows in unfocused in order to ensure movement reliability.<br>
+**The application has to detect inputs at all times and while the window is unfocused in order to ensure movement reliability.<br>
 Because of this, Windows Defender gets a bit scared, as there is an application that is "technically recording all inputs".<br>
-While this is "technically true", none of these inputs gets saved anywhere. Have a look at the code. It's only checking if certain buttons are pressed.
+While this is "technically true", none of these inputs gets saved anywhere. Have a look at the code. It's only checking if certain buttons are pressed.**
 
 ## Requirements
 
