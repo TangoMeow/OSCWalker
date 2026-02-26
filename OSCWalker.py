@@ -1,10 +1,6 @@
 from pythonosc.udp_client import SimpleUDPClient
+from pynput import keyboard
 import time 
-import pygame
-pygame.init()
-screen = pygame.display.set_mode((200,200))
-running = True
-clock = pygame.time.Clock()
 
 ip = "127.0.0.1"
 port = 9000
@@ -14,49 +10,54 @@ client = SimpleUDPClient(ip, port)  # Create client
 right = True
 left = True
 
-movingAmount = 40 # Change for moving duration
+movingAmount = 50 # Change for moving duration
 
 moving = 0
 
 steps = 0
 
+# Main movement code
 
+def on_press(key):
 
-# Movement
-while running:
+    # What am I doing...
+    global steps, left, right, moving
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    keys=pygame.key.get_pressed()
-    screen.fill("orange")
-
-    #Code for alternating steps
-
-    if keys[pygame.K_F13] and left == True:
+    # If left step taken and right step was taken before
+    if key == keyboard.Key.f13 and left == True:
+        global steps
         steps += 1
         moving = movingAmount
         left = False
         client.send_message("/input/MoveForward", 1)   # Move forward
         right = True
         print(steps)
-
-    if keys[pygame.K_F14] and right == True:
+    # If right step taken and left step was taken before
+    if key == keyboard.Key.f14 and right == True:
         steps += 1
         moving = movingAmount
-        right = False
-        client.send_message("/input/MoveForward", 1)   # Move forward
         left = True
+        client.send_message("/input/MoveForward", 1)   # Move forward
+        right = False
         print(steps)
 
-    #Constant move forward code with grace period to allow non-stop steps.
+# I think this is right... it's working so far...
 
-    if moving == 0:
-        client.send_message("/input/MoveForward", 0)
-    else:
+listener = keyboard.Listener(
+    on_press=on_press,
+)
+
+#Start listening for keyboard inputs... I think... This is why you don't copy code kids
+listener.start()
+
+
+# Loop for moving grace period, essentially a timer before actually stopping movement
+while True:
+    if moving > 0:
         moving -= 1
 
-    pygame.display.flip()
+        if moving == 0:
+            client.send_message("/input/MoveForward", 0)
+            print("Stopped moving")
 
-    clock.tick(100)
+    time.sleep(0.01)
