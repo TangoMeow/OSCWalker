@@ -2,6 +2,10 @@
 
 Extremely simple program that allows to track inputs from a Wii Balance Board into steps in VRChat using OSC.
 
+## Moved
+
+All future updates will be located on Gitea. (https://gitea.imadumbass.dog/Tango/OSCWalker)
+
 ## Windows Defender Screen
 
 **The application has to detect inputs at all times and while the window is unfocused in order to ensure movement reliability.<br>
